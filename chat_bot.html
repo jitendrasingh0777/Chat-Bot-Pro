@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?
+    family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="chat_bot.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="heading">Hello, there</h1>
+            <h2 class="sub-heading">How can I help you?</h2>
+        </header>
+        <ul class="suggestions">
+            <li class="suggestions-item">
+                <p class="text">Design a home office setup for remote work under $500.</p>
+                <span class="material-symbols-rounded">
+                    ✏️
+                    </span>
+            </li>
+            <li class="suggestions-item">
+                <p class="text">Design a home office setup for remote work under $500.</p>
+                <span class="material-symbols-rounded">
+                    💡
+                    </span>
+            </li>
+            <li class="suggestions-item">
+                <p class="text">Design a home office setup for remote work under $500.</p>
+                <span class="material-symbols-rounded">
+                    🌐
+                    </span>
+            </li>
+            <li class="suggestions-item">
+                <p class="text">Design a home office setup for remote work under $500.</p>
+                <span class="material-symbols-rounded">
+                    🧑‍💻
+                    </span>
+            </li>
+        </ul>
+
+        <!--Chats container-->
+        <div class="chats-container">
+          <div class="message user-message">
+          </div>
+          <div class="message bot-message">
+          </div>
+
+        </div>
+
+
+        <div class="prompt-container">
+            <div class="prompt-wrapper">
+                <form action="#" class="prompt-form">
+                    <input type="text" placeholder="Ask me..." 
+                    class="prompt-input" required>
+                    <div class="prompt-action">
+                        <button id="add-file-btn" type="button" 
+                        class="material-symbols-rounded">📎</button>
+                        <button id="send-prompt-btn" 
+                        class="material-symbols-rounded">⬆</button>
+                    </div>
+                </form>
+                <button id="theme-toggle-btn" 
+                class="material-symbols-rounded">🌙</button>
+                <button id="delete-btn" 
+                class="material-symbols-rounde">©</button>
+            </div>
+      
+            <p class="disclaimer-text">Ai can make mistake, please cross cheak with others sources</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
