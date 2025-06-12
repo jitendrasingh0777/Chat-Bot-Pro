@@ -1,0 +1,46 @@
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+import tensorflow as tf
+import json
+import numpy as np
+from pydantic import BaseModel
+
+# Load the chatbot model
+model = tf.keras.models.load_model("chatbot_model.keras")
+
+# Load chat data
+with open("chat-data.json", "r") as file:
+    chat_data = json.load(file)
+
+# Extract questions and answers
+qa_pairs = {q.lower(): qa["answer"] for qa in chat_data["questions"] for q in qa["question"].split("/")}
+
+app = FastAPI()
+
+# Enable CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class ChatRequest(BaseModel):
+    message: str
+
+@app.post("/chat")
+def chat(request: ChatRequest):
+    user_input = request.message.lower()
+
+    # Find exact match or use model (fallback)
+    if user_input in qa_pairs:
+        response = qa_pairs[user_input]
+    else:
+        response = "Sorry, I don't understand that yet."
+
+    return {"response": response}
+
+@app.get("/")
+def root():
+    return {"message": "Chatbot API is running!"}
