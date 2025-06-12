@@ -1,6 +1,18 @@
-#upload your datafile to fatch the data#
-#then upload your keras model#
+# here I used google colab to build and run this code 
 
+#upload your datafile to fatch the data
+#then upload your keras model
+
+
+from google.colab import files
+uploaded = files.upload()
+
+#now install all required packages
+
+!pip install fastapi uvicorn tensorflow pydantic[dotenv]
+!pip install pyngrok
+
+#----API CODE--------
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -48,3 +60,6 @@ def chat(request: ChatRequest):
 @app.get("/")
 def root():
     return {"message": "Chatbot API is running!"}
+
+
+
