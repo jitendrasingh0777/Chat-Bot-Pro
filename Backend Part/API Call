@@ -1,3 +1,7 @@
+#upload your datafile to fatch the data#
+#then upload your keras model#
+
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 import tensorflow as tf
